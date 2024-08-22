@@ -92,8 +92,8 @@ function Home() {
                 <FlatList
                     data={dishes}
                     renderItem={renderDishItem}
-                   
                     keyExtractor={(item) => item.id.toString()}
+                    numColumns={2}  // Setting the number of columns to 2
                 />
             </View>
             {location == null && (
@@ -120,7 +120,7 @@ function Home() {
                 </View>
             )}
             {manual && (
-                <Map method = {setManual} />
+                <Map method={setManual} />
             )}
             {address && (
                 <AddressC method={setAddress} />
@@ -221,18 +221,19 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     dishesContainer: {
         width: '100%',
         padding: 10,
     },
     card: {
+        flex: 1, // Adjust to fill half of the available space
         backgroundColor: '#fff',
         borderRadius: 10,
         elevation: 3,
         marginVertical: 8,
-        marginHorizontal: 16,
+        marginHorizontal: 8, // Adjust margin to maintain space between columns
         overflow: 'hidden',
     },
     cardImage: {
@@ -240,7 +241,6 @@ const styles = StyleSheet.create({
         height: 150,
     },
     cardContent: {
-        width: 100,
         padding: 10,
     },
     dishName: {
